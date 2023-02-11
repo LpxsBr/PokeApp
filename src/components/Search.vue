@@ -1,4 +1,5 @@
 <script setup>
+
     defineProps({
         
         btn:{
@@ -11,18 +12,18 @@
         },
         search:{
             type: Function,
-            required: true
+            required: false
         }
     })
 
     // const btn = true
+let name;
 </script>
 
 <template>
     <div class="search-area">
-        <input type="text" placeholder="Digite o nome do Pokémon que deseja buscar :)" onchange="()=>search()"/>
+        <input type="text" placeholder="Digite o nome do Pokémon que deseja buscar :)" @change="search"/>
         <button v-if="btn == 1" >{{ btnPlaceholder || "Search" }}</button>
-        <span id="test"></span>
     </div>
 </template>
 

@@ -1,10 +1,11 @@
 
 <script setup>
   import Search from '../components/Search.vue';
-  const test = () => {
-    console.log("aiaiaiai")
-    document.getElementById("test").innerHTML = "Pesquisou"
-  }
+import SearchResult from './SearchResult.vue';
+import {useRenderStore} from './../stores/RenderStore'
+import {usePokemonStore} from './../stores/PokemonStore'
+const render = useRenderStore();
+const pokemon = usePokemonStore();
 </script>
 
 <template>
@@ -13,8 +14,14 @@
             <div class="pokeapi-main-logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/800px-International_Pok%C3%A9mon_logo.svg.png" alt="pokeapi-logo">
             </div>
-            <Search :btn="true" :btnPlaceholder="'pesquisar'" :search="()=>test()" />
-        </div>
+            <Search :btn="true" :btnPlaceholder="'pesquisar'" :search="(event)=>{
+                render.setRender(true);
+                pokemon.setPokemon(event.target.value)
+                }" />
+        </div>  
+        <span v-if="render.$state.render ==  true" id="render">
+            <SearchResult :close="(event)=>{render.setRender(false); window.reload()}" :pokemon="pokemon.$state.pokemon" />
+        </span>
     </main>
 </template>
 
