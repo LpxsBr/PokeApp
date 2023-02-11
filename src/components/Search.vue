@@ -22,7 +22,7 @@ let name;
 
 <template>
     <div class="search-area">
-        <input type="text" placeholder="Digite o nome do Pokémon que deseja buscar :)" @change="search"/>
+        <input type="text" placeholder="Type your pokemon name and enter :)" @change="search"/>
         <button v-if="btn == 1" >{{ btnPlaceholder || "Search" }}</button>
     </div>
 </template>
@@ -33,12 +33,14 @@ let name;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 3%;
     gap: 20px;
 }
 
 input{
-    width: 60vh;
-    height: 8vh;
+    font-size: small;
+    width: 100%;
+    height: 100% ;
     padding: 10px;
     border-radius: 10px;
     font-size: medium;
@@ -54,5 +56,11 @@ button{
     border-radius: 10px;
     color: aliceblue;
     font-size: medium;
+}
+
+@media(max-width: 600px ){
+    .search-area{
+        padding: 15%;
+    }
 }
 </style>

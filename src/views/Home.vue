@@ -9,43 +9,57 @@ const pokemon = usePokemonStore();
 </script>
 
 <template>
-    <main>
+    <main class="main-home">
         <div class="container">
             <div class="pokeapi-main-logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/800px-International_Pok%C3%A9mon_logo.svg.png" alt="pokeapi-logo">
             </div>
-            <Search :btn="true" :btnPlaceholder="'pesquisar'" :search="(event)=>{
+            <Search :btn="false" :btnPlaceholder="'pesquisar'" :search="(event)=>{
                 render.setRender(true);
                 pokemon.setPokemon(event.target.value)
                 }" />
-        </div>  
-        <span v-if="render.$state.render ==  true" id="render">
-            <SearchResult :close="(event)=>{render.setRender(false); window.reload()}" :pokemon="pokemon.$state.pokemon" />
-        </span>
+                <div v-if="render.$state.render ===  true" id="render">
+                    <SearchResult :pokemon="pokemon.$state.pokemon" />
+                </div>
+        </div> 
+        
     </main>
 </template>
 
 <style>
-*{
-    color: #000;
-}
-
-main{
-    height: calc(100vh - (200px + 80px));
+.main-home{
+    height: 100vh;
+    padding: 3%;
 }
 .pokeapi-main-logo{
     display: flex;
     justify-content: center;
 }
 img{
-    width: 40%;
+    width: 50%;
 }
 .container{
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: -40%;
+}
+
+#render{
+    display: flex;
+    animation: runOpacity linear 1s;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes runOpacity {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 

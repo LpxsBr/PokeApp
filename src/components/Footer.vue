@@ -5,7 +5,7 @@ import IconGitHub from './icons/IconGitHub.vue';
 
 <template>
     <footer>
-        <div class="item">
+        <nav class="footer">
             <div class="logo">
                 <img class="copy-logo" alt="logo-copybase" src="https://uploads-ssl.webflow.com/6356e75722f218bac247e7c6/636180db578c477db8820169_logo-branco.svg"/>
                 <img class="pokeapi-logo" alt="logo-pokeapi" src="https://avatars.githubusercontent.com/u/64151210?v=4"/>
@@ -17,52 +17,58 @@ import IconGitHub from './icons/IconGitHub.vue';
             <div class="social">
                 <IconGitHub/>
             </div>
-        </div>
+        </nav>
     </footer>
 </template>
 
 <style>
 footer{
-    width: 100%;
-    height: 200px;
-    background: purple;
     display: flex;
-    border: 1px solid white;
     justify-content: center;
     align-items: center;
-    gap: 10%;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(0, 0, 143);
+    border: 1px solid white;
+    }
+.copy-logo,
+.pokeapi-logo{
+    width: 20%;
 }
-a{
-    text-decoration: none;
-    color: #fff;
-    margin: 10px;
-}
-a:visited{
-    color: #fff;
-}
-footer 
-.menu{
+.footer{
     display: flex;
-    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    /* border: 1px solid white; */
 }
 
-.logo{
-    width: calc(100% / 3);
-    display: flex;
-    gap: 5%;
-}
-.pokeapi-logo{
-    width: 30vh;
-}
+.footer .logo,
 .social{
-    /* width: calc(100% / 3); */
-    display: flex;
-    gap: 10%;
-}
-.item{
+    height: 100%;
+    width: 300px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 60%;
+}
+.footer .menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 600px){
+    footer{
+        height: 400px;
+    }
+    .footer
+    .logo,
+    .social{
+        height: 20%;
+    }
 }
 </style>
