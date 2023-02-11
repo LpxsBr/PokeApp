@@ -11,19 +11,25 @@ axios.get("https://pokeapi.co/api/v2/pokemon/"+route.params.id+"/")
 
     .then((resp)=>{
         result.setResult({
+            id: resp.data.id,
             name: resp.data.name,
-            image: resp.data.sprites.front_default
+            image: resp.data.sprites.front_default,
+            especies: resp.data.species.url,
+            found: true
         })
     })
 
     .catch((err)=>console.log(err))
 
-let image = result.$state.result.image
-let name = result.$state.result.name
+
+    axios.get(result.$state.result.especies)
+    .then((resp)=>console.log(resp.data))
+    .catch((err)=>console.log(err))
+
 </script>
 
 <template>
-    <main class="about">
+    <main class="detail">
         <div>
             <img :src=" result.$state.result.image " alt="as" class="image"/>
             <h1>
@@ -34,12 +40,9 @@ let name = result.$state.result.name
 </template>
 
 <style>
-*{
-    color: #000;
-}
 
-main{
-    height: calc(100vh - (200px + 80px));
+.detail{
+    height: 100vh;
 }
 
 
