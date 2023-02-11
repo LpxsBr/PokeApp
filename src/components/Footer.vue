@@ -22,9 +22,6 @@ import IconGitHub from './icons/IconGitHub.vue';
 </template>
 
 <style>
-*{
-    /* margin: 0%; */
-}
 footer{
     width: 100%;
     height: 200px;
