@@ -1,8 +1,5 @@
 <script setup>
 
-    import PokeApi from './api';
-    import reading from './search.js'
-
     defineProps({
         
         btn:{
@@ -15,7 +12,7 @@
         },
         search:{
             type: Function,
-            required: true
+            required: false
         }
     })
 
@@ -25,11 +22,9 @@ let name;
 
 <template>
     <div class="search-area">
-        <input type="text" placeholder="Digite o nome do Pokémon que deseja buscar :)" @change="reading.methods.greet"/>
+        <input type="text" placeholder="Digite o nome do Pokémon que deseja buscar :)" @change="search"/>
         <button v-if="btn == 1" >{{ btnPlaceholder || "Search" }}</button>
-        <span id="test"></span>
     </div>
-    <PokeApi pokemon="reading.methods.greet" />
 </template>
 
 <style>
