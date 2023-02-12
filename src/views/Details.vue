@@ -99,7 +99,6 @@ axios.get("https://pokeapi.co/api/v2/pokemon/"+route.params.id+"/")
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: aqua;
 }
 
 .card{
